@@ -1,0 +1,17 @@
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\bin\Debug\net7.0\ClinicFlow.Infrastructure.deps.json
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\bin\Debug\net7.0\ClinicFlow.Infrastructure.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\bin\Debug\net7.0\ClinicFlow.Infrastructure.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\bin\Debug\net7.0\ClinicFlow.Application.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\bin\Debug\net7.0\ClinicFlow.Domain.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\bin\Debug\net7.0\ClinicFlow.Application.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\bin\Debug\net7.0\ClinicFlow.Domain.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.AssemblyInfo.cs
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.csproj.CopyComplete
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\refint\ClinicFlow.Infrastructure.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ClinicFlow.Infrastructure.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Infrastructure\obj\Debug\net7.0\ref\ClinicFlow.Infrastructure.dll

@@ -1,0 +1,62 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "ClinicFlow.API/1.0.0": {
+        "dependencies": {
+          "ClinicFlow.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "ClinicFlow.API.dll": {}
+        }
+      },
+      "ClinicFlow.Application/1.0.0": {
+        "dependencies": {
+          "ClinicFlow.Domain": "1.0.0"
+        },
+        "runtime": {
+          "ClinicFlow.Application.dll": {}
+        }
+      },
+      "ClinicFlow.Domain/1.0.0": {
+        "runtime": {
+          "ClinicFlow.Domain.dll": {}
+        }
+      },
+      "ClinicFlow.Infrastructure/1.0.0": {
+        "dependencies": {
+          "ClinicFlow.Application": "1.0.0"
+        },
+        "runtime": {
+          "ClinicFlow.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClinicFlow.API/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClinicFlow.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClinicFlow.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClinicFlow.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

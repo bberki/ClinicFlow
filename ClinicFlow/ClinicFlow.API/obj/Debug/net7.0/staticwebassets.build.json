@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "pgnFcERJGwWOEGoGuiRHHGcz28DAoC8j4FuSrlGkokQ=",
+  "Source": "ClinicFlow.API",
+  "BasePath": "_content/ClinicFlow.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

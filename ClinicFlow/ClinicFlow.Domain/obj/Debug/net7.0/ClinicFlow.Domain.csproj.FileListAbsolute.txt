@@ -1,0 +1,11 @@
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\bin\Debug\net7.0\ClinicFlow.Domain.deps.json
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\bin\Debug\net7.0\ClinicFlow.Domain.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\bin\Debug\net7.0\ClinicFlow.Domain.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\ClinicFlow.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\ClinicFlow.Domain.AssemblyInfoInputs.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\ClinicFlow.Domain.AssemblyInfo.cs
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\ClinicFlow.Domain.csproj.CoreCompileInputs.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\ClinicFlow.Domain.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\refint\ClinicFlow.Domain.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\ClinicFlow.Domain.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Domain\obj\Debug\net7.0\ref\ClinicFlow.Domain.dll

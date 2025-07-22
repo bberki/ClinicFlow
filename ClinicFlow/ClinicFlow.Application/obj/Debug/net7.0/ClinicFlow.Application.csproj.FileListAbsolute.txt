@@ -1,0 +1,15 @@
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\bin\Debug\net7.0\ClinicFlow.Application.deps.json
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\bin\Debug\net7.0\ClinicFlow.Application.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\bin\Debug\net7.0\ClinicFlow.Application.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\bin\Debug\net7.0\ClinicFlow.Domain.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\bin\Debug\net7.0\ClinicFlow.Domain.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.csproj.AssemblyReference.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.AssemblyInfoInputs.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.AssemblyInfo.cs
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.csproj.CoreCompileInputs.cache
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.csproj.CopyComplete
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\refint\ClinicFlow.Application.dll
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ClinicFlow.Application.pdb
+C:\Users\bugra\Documents\Staj Proje\ClinicFlow\ClinicFlow\ClinicFlow.Application\obj\Debug\net7.0\ref\ClinicFlow.Application.dll
