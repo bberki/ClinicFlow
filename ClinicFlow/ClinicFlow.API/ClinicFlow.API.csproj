@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClinicFlow.Infrastructure\ClinicFlow.Infrastructure.csproj" />
+    <ProjectReference Include="..\ClinicFlow.Application\ClinicFlow.Application.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
