@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicFlow.Application", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicFlow.Infrastructure", "ClinicFlow.Infrastructure\ClinicFlow.Infrastructure.csproj", "{119AF31C-2F86-403E-9D7B-0B156B9EF769}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicFlow.Tests", "ClinicFlow.Tests\ClinicFlow.Tests.csproj", "{D69B7401-8318-4292-8C85-05203CCF7FA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{119AF31C-2F86-403E-9D7B-0B156B9EF769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{119AF31C-2F86-403E-9D7B-0B156B9EF769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{119AF31C-2F86-403E-9D7B-0B156B9EF769}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{119AF31C-2F86-403E-9D7B-0B156B9EF769}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
+                {119AF31C-2F86-403E-9D7B-0B156B9EF769}.Release|Any CPU.Build.0 = Release|Any CPU
+                {D69B7401-8318-4292-8C85-05203CCF7FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {D69B7401-8318-4292-8C85-05203CCF7FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {D69B7401-8318-4292-8C85-05203CCF7FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {D69B7401-8318-4292-8C85-05203CCF7FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+        EndGlobalSection
 EndGlobal
