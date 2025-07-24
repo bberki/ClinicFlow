@@ -4,6 +4,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using MediatR;
+using ClinicFlow.Application.Greetings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,7 @@ builder.Services
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetGreetingQuery>());
 
 var app = builder.Build();
 
@@ -38,6 +41,12 @@ app.UseAuthorization();
 app.MapGet("/", () => "Hello World!");
 
 app.MapGet("/public", () => "Public endpoint");
+
+app.MapGet("/greeting", async (IMediator mediator) =>
+{
+    var message = await mediator.Send(new GetGreetingQuery());
+    return Results.Ok(message);
+});
 
 app.MapGet("/protected", [Authorize]() => "You are authenticated!");
 
@@ -71,3 +80,5 @@ app.MapPost("/token", (UserCredential credential) =>
 app.Run();
 
 record UserCredential(string Username, string Password);
+
+public partial class Program { }
