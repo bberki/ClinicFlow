@@ -15,5 +15,8 @@ public class CreateAppointmentCommandValidator : AbstractValidator<CreateAppoint
         RuleFor(x => x.ScheduledAt)
             .Must(d => d > DateTime.Now)
             .WithMessage("Scheduled time must be in the future");
+
+        RuleFor(x => x.UserId)
+            .GreaterThan(0);
     }
 }
