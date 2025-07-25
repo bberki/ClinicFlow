@@ -30,6 +30,16 @@ dotnet run --project ClinicFlow.API
 
 The application listens on the URLs defined in `appsettings.json` and `launchSettings.json`.
 
+## Database
+
+Entity Framework Core migrations are included in the Infrastructure project. To apply them to the configured database run:
+
+```bash
+cd ClinicFlow
+dotnet ef database update --project ClinicFlow.Infrastructure/ClinicFlow.Infrastructure.csproj \
+    --startup-project ClinicFlow.API/ClinicFlow.API.csproj
+```
+
 ## Usage
 
 1. **Request a token**
