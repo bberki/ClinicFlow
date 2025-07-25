@@ -7,11 +7,28 @@ ClinicFlow is an example solution structured around **Clean Architecture** princ
 - **Infrastructure** – implementation details (e.g., database, external services)
 - **API** – ASP.NET Core entry point exposing HTTP endpoints
 
+
 The project targets **.NET 8** (see `Directory.Build.props`). Command and Query responsibilities will be separated using a Mediator pattern, and authentication will rely on **JWT** tokens.
+
+## .NET 8 SDK
+
+This repository requires the **.NET 8 SDK**. Install the SDK before building or running the solution. The cross-platform install script provided by Microsoft is the quickest way to get started:
+
+```bash
+curl -fsSL https://dot.net/install.sh | bash /dev/stdin --channel 8.0
+```
+
+On Windows you can install via `winget`:
+
+```powershell
+winget install Microsoft.DotNet.SDK.8
+```
+
+For other installation options, see the [official documentation](https://learn.microsoft.com/dotnet/core/install/).
 
 ## Building
 
-1. Ensure you have [.NET 8 SDK](https://dotnet.microsoft.com/download) installed.
+1. Ensure the .NET 8 SDK is installed (see the section above).
 2. Restore and build the solution:
 
 ```bash
@@ -80,10 +97,11 @@ JWT settings (issuer, audience, key) can be customized in `ClinicFlow.API/appset
 
 ## Running Tests
 
-Execute unit tests using the .NET CLI:
+After installing the SDK you can restore dependencies and execute the unit tests:
 
 ```bash
 cd ClinicFlow
+dotnet restore
 dotnet test ClinicFlow.Tests/ClinicFlow.Tests.csproj
 ```
 
