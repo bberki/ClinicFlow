@@ -22,17 +22,24 @@ public class ClinicFlowDbContext : DbContext
         modelBuilder.Entity<Appointment>()
             .HasOne(a => a.Patient)
             .WithMany(p => p.Appointments)
-            .HasForeignKey(a => a.PatientId);
+            .HasForeignKey(a => a.PatientId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Appointment>()
             .HasOne(a => a.Doctor)
             .WithMany(d => d.Appointments)
-            .HasForeignKey(a => a.DoctorId);
+            .HasForeignKey(a => a.DoctorId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Appointment>()
             .HasOne(a => a.User)
             .WithMany(u => u.Appointments)
-            .HasForeignKey(a => a.UserId);
+            .HasForeignKey(a => a.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<User>()
+            .Property(u => u.Username)
+            .IsRequired();
 
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Username)
@@ -41,5 +48,13 @@ public class ClinicFlowDbContext : DbContext
         modelBuilder.Entity<Appointment>()
             .HasIndex(a => a.ScheduledAt)
             .IsClustered(false);
+
+        modelBuilder.Entity<Patient>()
+            .Property(p => p.FirstName)
+            .IsRequired();
+
+        modelBuilder.Entity<Patient>()
+            .Property(p => p.LastName)
+            .IsRequired();
     }
 }
