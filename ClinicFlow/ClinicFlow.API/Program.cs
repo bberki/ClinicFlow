@@ -1,20 +1,33 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 using MediatR;
 using FluentValidation;
+using Serilog;
 using ClinicFlow.Application.Greetings;
 using ClinicFlow.Application.Users;
+using ClinicFlow.Application.Common;
+using ClinicFlow.Infrastructure.Data;
+using ClinicFlow.Infrastructure.Repositories;
+using ClinicFlow.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
 
 var jwtSection = builder.Configuration.GetSection("Jwt");
 var jwtKey = jwtSection["Key"] ?? throw new InvalidOperationException("JWT Key not configured");
 var jwtIssuer = jwtSection["Issuer"];
 var jwtAudience = jwtSection["Audience"];
+
+builder.Services.Configure<JwtSettings>(jwtSection);
+builder.Services.AddDbContext<ClinicFlowDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -56,32 +69,25 @@ app.MapGet("/protected", [Authorize]() => "You are authenticated!");
 app.MapGet("/admin", [Authorize(Roles = "Admin")] (ClaimsPrincipal user) =>
     $"Hello {user.Identity?.Name}, you are an admin.");
 
-app.MapPost("/token", (UserCredential credential) =>
-{
-    if (credential.Username == "admin" && credential.Password == "password")
-    {
-        var claims = new[]
-        {
-            new Claim(ClaimTypes.Name, credential.Username),
-            new Claim(ClaimTypes.Role, "Admin")
-        };
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        var token = new JwtSecurityToken(
-            issuer: jwtIssuer,
-            audience: jwtAudience,
-            claims: claims,
-            expires: DateTime.UtcNow.AddHours(1),
-            signingCredentials: creds);
-        var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
-        return Results.Ok(new { token = tokenValue });
-    }
+var authGroup = app.MapGroup("/auth");
 
-    return Results.Unauthorized();
+authGroup.MapPost("/register", async (IMediator mediator, RegisterUserCommand command) =>
+{
+    await mediator.Send(command);
+    return Results.Ok();
 });
 
-app.Run();
+authGroup.MapPost("/login", async (IMediator mediator, LoginQuery query) =>
+{
+    var token = await mediator.Send(query);
+    if (string.IsNullOrEmpty(token))
+    {
+        return Results.Unauthorized();
+    }
+    return Results.Ok(new { token });
+});
 
-record UserCredential(string Username, string Password);
+
+app.Run();
 
 public partial class Program { }
