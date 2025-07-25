@@ -9,6 +9,8 @@ using Serilog;
 using ClinicFlow.Application.Greetings;
 using ClinicFlow.Application.Users;
 using ClinicFlow.Application.Common;
+using ClinicFlow.Application.Appointments;
+using System.Security.Claims;
 using ClinicFlow.Infrastructure.Data;
 using ClinicFlow.Infrastructure.Repositories;
 using ClinicFlow.Infrastructure.Services;
@@ -89,6 +91,22 @@ authGroup.MapPost("/login", async (IMediator mediator, LoginQuery query) =>
         return Results.Unauthorized();
     }
     return Results.Ok(new { token });
+});
+
+app.MapPost("/appointments", [Authorize] async (
+    IMediator mediator,
+    ClaimsPrincipal user,
+    CreateAppointmentCommand command) =>
+{
+    var userIdClaim = user.FindFirstValue(ClaimTypes.NameIdentifier);
+    if (string.IsNullOrEmpty(userIdClaim))
+    {
+        return Results.Unauthorized();
+    }
+
+    var userId = int.Parse(userIdClaim);
+    var result = await mediator.Send(command with { UserId = userId });
+    return Results.Ok(new { id = result });
 });
 
 

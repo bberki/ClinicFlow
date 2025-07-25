@@ -20,7 +20,7 @@ public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointment
             PatientId = request.PatientId,
             DoctorId = request.DoctorId,
             ScheduledAt = request.ScheduledAt,
-            UserId = 0
+            UserId = request.UserId
         };
 
         return await _repository.AddAsync(appointment, cancellationToken);
