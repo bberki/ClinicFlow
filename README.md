@@ -28,6 +28,8 @@ cd ClinicFlow
 dotnet run --project ClinicFlow.API
 ```
 
+Once running, navigate to `http://localhost:5000/swagger` to explore the API using Swagger UI.
+
 The application listens on the URLs defined in `appsettings.json` and `launchSettings.json`.
 
 ## Database
