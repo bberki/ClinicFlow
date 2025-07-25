@@ -33,5 +33,13 @@ public class ClinicFlowDbContext : DbContext
             .HasOne(a => a.User)
             .WithMany(u => u.Appointments)
             .HasForeignKey(a => a.UserId);
+
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Username)
+            .IsUnique();
+
+        modelBuilder.Entity<Appointment>()
+            .HasIndex(a => a.ScheduledAt)
+            .IsClustered(false);
     }
 }
