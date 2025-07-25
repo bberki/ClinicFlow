@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using MediatR;
 using ClinicFlow.Application.Greetings;
+using ClinicFlow.Application.Auth;
+using ClinicFlow.Infrastructure.Repositories;
+using ClinicFlow.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +35,8 @@ builder.Services
 
 builder.Services.AddAuthorization();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetGreetingQuery>());
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 
@@ -53,24 +58,12 @@ app.MapGet("/protected", [Authorize]() => "You are authenticated!");
 app.MapGet("/admin", [Authorize(Roles = "Admin")] (ClaimsPrincipal user) =>
     $"Hello {user.Identity?.Name}, you are an admin.");
 
-app.MapPost("/token", (UserCredential credential) =>
+app.MapPost("/token", async (UserCredential credential, IUserRepository users, ITokenService tokenService) =>
 {
-    if (credential.Username == "admin" && credential.Password == "password")
+    var user = await users.GetByCredentialsAsync(credential.Username, credential.Password);
+    if (user is not null)
     {
-        var claims = new[]
-        {
-            new Claim(ClaimTypes.Name, credential.Username),
-            new Claim(ClaimTypes.Role, "Admin")
-        };
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        var token = new JwtSecurityToken(
-            issuer: jwtIssuer,
-            audience: jwtAudience,
-            claims: claims,
-            expires: DateTime.UtcNow.AddHours(1),
-            signingCredentials: creds);
-        var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
+        var tokenValue = tokenService.GenerateToken(user);
         return Results.Ok(new { token = tokenValue });
     }
 
