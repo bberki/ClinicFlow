@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using MediatR;
+using ClinicFlow.Application;
 using ClinicFlow.Application.Greetings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +32,7 @@ builder.Services
     });
 
 builder.Services.AddAuthorization();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetGreetingQuery>());
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
