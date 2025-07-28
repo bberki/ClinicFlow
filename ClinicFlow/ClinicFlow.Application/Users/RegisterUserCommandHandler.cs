@@ -15,11 +15,12 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand>
         _repository = repository;
     }
 
-    public async Task Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
         var hash = HashPassword(request.Password);
         var user = new User { Username = request.Username, PasswordHash = hash };
         await _repository.AddAsync(user, cancellationToken);
+        return Unit.Value;
     }
 
     private static string HashPassword(string password)
