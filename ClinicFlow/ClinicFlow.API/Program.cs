@@ -48,7 +48,7 @@ builder.Services
     });
 
 builder.Services.AddAuthorization();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetGreetingQuery>());
+builder.Services.AddMediatR(typeof(GetGreetingQuery).Assembly);
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterUserCommand>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
