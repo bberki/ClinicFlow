@@ -17,6 +17,18 @@ public class AuthEndpointTests : IClassFixture<TestApplicationFactory>
     }
 
     [Fact]
+    public async Task Login_ValidCredentials_ReturnsToken()
+    {
+        var payload = new { username = "apiuser", password = "secret" };
+
+        var response = await _client.PostAsJsonAsync("/api/auth/login", payload);
+        response.EnsureSuccessStatusCode();
+
+        var json = await response.Content.ReadFromJsonAsync<TokenResponse>();
+        Assert.False(string.IsNullOrEmpty(json?.token));
+    }
+
+    [Fact]
     public async Task RegisterAndLogin_Workflow()
     {
         var registerResponse = await _client.PostAsJsonAsync("/auth/register", new { username = "apiuser", password = "secret" });
