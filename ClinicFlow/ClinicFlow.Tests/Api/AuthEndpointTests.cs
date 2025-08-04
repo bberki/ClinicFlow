@@ -16,10 +16,13 @@ public class AuthEndpointTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Login_ValidCredentials_ReturnsToken()
     {
-        var response = await _client.PostAsJsonAsync("/api/auth/login", new { username = "apiuser", password = "secret" });
+        var payload = new { username = "apiuser", password = "secret" };
+
+        var response = await _client.PostAsJsonAsync("/api/auth/login", payload);
         response.EnsureSuccessStatusCode();
-        var json = await response.Content.ReadFromJsonAsync<TokenResponse>();
-        Assert.False(string.IsNullOrEmpty(json?.token));
+
+        var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
+        Assert.False(string.IsNullOrEmpty(tokenResponse?.token));
     }
 
     private record TokenResponse(string token);
