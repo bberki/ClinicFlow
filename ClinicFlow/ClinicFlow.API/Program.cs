@@ -1,8 +1,9 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using MediatR;
 using FluentValidation;
 using Serilog;
@@ -51,29 +52,80 @@ builder.Services.AddAuthorization();
 builder.Services.AddMediatR(typeof(GetGreetingQuery).Assembly);
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterUserCommand>();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "ClinicFlow API",
+        Version = "v1"
+    });
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme."
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseSwagger();
-app.UseSwaggerUI();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello World!")
+    .WithName("GetRoot")
+    .WithTags("General")
+    .Produces<string>(StatusCodes.Status200OK);
 
-app.MapGet("/public", () => "Public endpoint");
+app.MapGet("/public", () => "Public endpoint")
+    .WithName("GetPublic")
+    .WithTags("General")
+    .Produces<string>(StatusCodes.Status200OK);
 
 app.MapGet("/greeting", async (IMediator mediator) =>
 {
     var message = await mediator.Send(new GetGreetingQuery());
     return Results.Ok(message);
-});
+})
+    .WithName("GetGreeting")
+    .WithTags("Greetings")
+    .Produces<string>(StatusCodes.Status200OK);
 
-app.MapGet("/protected", [Authorize]() => "You are authenticated!");
+app.MapGet("/protected", [Authorize]() => "You are authenticated!")
+    .WithName("GetProtected")
+    .WithTags("Auth")
+    .Produces<string>(StatusCodes.Status200OK);
 
 app.MapGet("/admin", [Authorize(Roles = "Admin")] (ClaimsPrincipal user) =>
-    $"Hello {user.Identity?.Name}, you are an admin.");
+    $"Hello {user.Identity?.Name}, you are an admin.")
+    .WithName("GetAdmin")
+    .WithTags("Auth")
+    .Produces<string>(StatusCodes.Status200OK);
 
 var authGroup = app.MapGroup("/auth");
 
@@ -81,7 +133,10 @@ authGroup.MapPost("/register", async (IMediator mediator, RegisterUserCommand co
 {
     await mediator.Send(command);
     return Results.Ok();
-});
+})
+    .WithName("RegisterUser")
+    .WithTags("Authentication")
+    .Produces(StatusCodes.Status200OK);
 
 authGroup.MapPost("/login", async (IMediator mediator, LoginQuery query) =>
 {
@@ -91,7 +146,11 @@ authGroup.MapPost("/login", async (IMediator mediator, LoginQuery query) =>
         return Results.Unauthorized();
     }
     return Results.Ok(new { token });
-});
+})
+    .WithName("Login")
+    .WithTags("Authentication")
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status401Unauthorized);
 
 app.MapPost("/appointments", [Authorize] async (
     IMediator mediator,
@@ -107,7 +166,11 @@ app.MapPost("/appointments", [Authorize] async (
     var userId = int.Parse(userIdClaim);
     var result = await mediator.Send(command with { UserId = userId });
     return Results.Ok(new { id = result });
-});
+})
+    .WithName("CreateAppointment")
+    .WithTags("Appointments")
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status401Unauthorized);
 
 
 app.Run();
