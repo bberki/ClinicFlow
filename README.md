@@ -46,6 +46,7 @@ dotnet run --project ClinicFlow.API
 ```
 
 Once running, navigate to `http://localhost:5000/swagger` to explore the API using Swagger UI.
+Swagger is enabled only in development and includes a `Bearer` security scheme so you can authorize with a JWT token via the **Authorize** button.
 
 The application listens on the URLs defined in `appsettings.json` and `launchSettings.json`.
 
